@@ -18,7 +18,7 @@ class Conta_bancaria():
         self.__saldo = self.__saldo + s
 
     def saque(self, s):
-        if self.__saldo > 0:
+        if self.__saldo != 0 and s <= self.__saldo:
             self.__saldo = self.__saldo - s
         elif (self.__saldo <= 0) or (self.__saldo < s):
             print("Saldo insuficiente")
@@ -29,15 +29,24 @@ c.set_nome(input("""Digite o nome do titular:
 """))
 c.set_numero(int(input("""Digite o numero da conta:
 """)))
+
+
 operacao = int(input("""[1] Ver saldo
 [2] Deposito
-[3] Saque """))
-
-if operacao == 1:
-    print("Seu saldo é: ", c.get_saldo())   
-elif operacao == 2:
-    c.deposito(float(input("Qual valor deseja depositar em sua conta? \n")))
-elif operacao == 3:
-    c.saque(float(input("Qual valor deseja sacar de sua conta? \n")))
+[3] Saque 
+[4] Sair"""))
+while operacao != 4:
+    if operacao == 1:
+        print("Seu saldo é: ", c.get_saldo())   
+    elif operacao == 2:
+        c.deposito(float(input("Qual valor deseja depositar em sua conta? \n")))
+        print("Seu novo saldo é: ",c.get_saldo)
+    elif operacao == 3:
+        c.saque(float(input("Qual valor deseja sacar de sua conta? \n")))
+        print("Seu novo saldo é: ",c.get_saldo)
+    operacao = int(input("""[1] Ver saldo
+[2] Deposito
+[3] Saque 
+[4] Sair"""))Ge
 
 
